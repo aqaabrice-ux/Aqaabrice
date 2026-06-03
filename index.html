@@ -861,9 +861,9 @@
     </div>
     <div class="footer-col">
       <h4>Categories</h4>
-      <a onclick="showPage('products');filterCat('rice',document.querySelector('.cat-tab:nth-child(2)'))">Rice</a>
-      <a onclick="showPage('products');filterCat('brown-rice',document.querySelector('.cat-tab:nth-child(3)'))">Brown Rice</a>
-      <a onclick="showPage('products');filterCat('chai-patt',document.querySelector('.cat-tab:nth-child(4)'))">Chai Patt</a>
+      <a onclick="showPage('products');filterCat('basmati rice',document.querySelector('.cat-tab:nth-child(2)'))">Rice</a>
+      <a onclick="showPage('products');filterCat('brown rice',document.querySelector('.cat-tab:nth-child(3)'))">Brown Rice</a>
+      <a onclick="showPage('products');filterCat('chai patti',document.querySelector('.cat-tab:nth-child(4)'))">Chai Patt</a>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
@@ -891,22 +891,22 @@
 // ─── PRODUCT DATA ────────────────────────────────────
 const products = [
   // RICE
-  { id: 1, name: 'Royal Diamond', subtitle: '1121 Steamed Basmati Rice', cat: 'rice', price: 400, icon: '🌾', badge: 'Premium' },
-  { id: 2, name: 'Riwaiti', subtitle: 'Traditional Basmati Rice', cat: 'rice', price: 380, icon: '🍚', badge: null },
-  { id: 3, name: 'Premium', subtitle: 'Long Grain Basmati', cat: 'rice', price: 360, icon: '✨', badge: null },
-  { id: 4, name: 'Classic', subtitle: 'Classic Basmati Rice', cat: 'rice', price: 330, icon: '🌾', badge: null },
-  { id: 5, name: 'Yadgaar', subtitle: 'Heritage Basmati Blend', cat: 'rice', price: 300, icon: '🏺', badge: null },
-  { id: 6, name: 'Short Grain', subtitle: 'Premium Short Grain Rice', cat: 'rice', price: 270, icon: '🫘', badge: null },
-  { id: 7, name: 'Daaghi', subtitle: 'Perfect for Biryani', cat: 'rice', price: 280, icon: '🍛', badge: 'Biryani' },
+  { id: 1, name: 'Supreme', subtitle: '1121 Steamed Basmati Rice', cat: 'rice', price: 400, icon: '', badge: 'Premium' },
+  { id: 2, name: 'Riwaiti', subtitle: 'Traditional Basmati Rice', cat: 'rice', price: 380, icon: '', badge: null },
+  { id: 3, name: 'Premium', subtitle: 'Long Grain Basmati', cat: 'rice', price: 360, icon: '', badge: null },
+  { id: 4, name: 'Classic', subtitle: 'Classic Basmati Rice', cat: 'rice', price: 330, icon: '', badge: null },
+  { id: 5, name: 'Yadgaar', subtitle: 'Heritage Basmati Blend', cat: 'rice', price: 300, icon: '', badge: null },
+  { id: 6, name: 'Short Grain', subtitle: 'Premium Short Grain Rice', cat: 'rice', price: 270, icon: '', badge: null },
+  { id: 7, name: 'Daaghi', subtitle: 'Perfect for Biryani', cat: 'rice', price: 280, icon: '', badge: 'Biryani' },
   // BROWN RICE
-  { id: 8, name: 'B-1 Brown Rice', subtitle: 'Whole Grain Brown Rice', cat: 'brown-rice', price: 230, icon: '🌿', badge: 'Healthy' },
-  { id: 9, name: 'B-2 Brown Rice', subtitle: 'Nutritious Brown Basmati', cat: 'brown-rice', price: 180, icon: '🌱', badge: null },
+  { id: 8, name: 'B-1 Brown Rice', subtitle: 'Whole Grain Brown Rice', cat: 'brown-rice', price: 230, icon: '', badge: 'Healthy' },
+  { id: 9, name: 'B-2 Brown Rice', subtitle: 'Nutritious Brown Basmati', cat: 'brown-rice', price: 180, icon: '', badge: null },
   // SELLA
-  { id: 10, name: 'Sella Gold', subtitle: 'Golden Sella Basmati', cat: 'rice', price: 380, icon: '🥇', badge: 'Gold' },
-  { id: 11, name: 'Sella Silver', subtitle: 'Silver Sella Basmati', cat: 'rice', price: 350, icon: '🥈', badge: null },
+  { id: 10, name: 'Sella Gold', subtitle: 'XXXL Sella ', cat: 'rice', price: 380, icon: '', badge: 'Gold' },
+  { id: 11, name: 'Sella Silver', subtitle: 'XXl Sella', cat: 'rice', price: 350, icon: '', badge: null },
   // CHAI PATT
-  { id: 12, name: 'Chai Patt Classic', subtitle: 'Aromatic Tea Leaves', cat: 'chai-patt', price: 250, icon: '🫖', badge: 'Aromatic' },
-  { id: 13, name: 'Chai Patt Premium', subtitle: 'Premium Blend Tea Leaves', cat: 'chai-patt', price: 350, icon: '🍵', badge: 'Premium' },
+  { id: 12, name: 'Chai Patti Classic', subtitle: 'Aromatic Tea Leaves', cat: 'chai-patt', price: 250, icon: '🫖', badge: 'Aromatic' },
+  { id: 13, name: 'Chai Patti Premium', subtitle: 'Premium Blend Tea Leaves', cat: 'chai-patt', price: 350, icon: '🍵', badge: 'Premium' },
 ];
 
 const CATEGORY_COLORS = {
