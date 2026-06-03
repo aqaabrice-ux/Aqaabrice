@@ -24,7 +24,6 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Barlow', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
 
-  /* ─── ANNOUNCEMENT BAR ─────────────────────────────────── */
   .announce-bar {
     background: var(--crimson-deep);
     color: #fff;
@@ -36,7 +35,6 @@
   }
   .announce-bar strong { color: var(--gold-light); }
 
-  /* ─── TOP SOCIAL BAR ───────────────────────────────────── */
   .social-bar {
     background: var(--dark);
     display: flex;
@@ -57,7 +55,6 @@
   }
   .social-icons a:hover { color: var(--gold-light); transform: scale(1.15); background: rgba(255,255,255,.14); }
 
-  /* ─── NAVBAR ──────────────────────────────────────────── */
   nav {
     position: sticky; top: 0; z-index: 999;
     background: #fff;
@@ -123,12 +120,10 @@
   }
   .cart-count.show { display: flex; }
 
-  /* ─── PAGES ────────────────────────────────────────────── */
   .page { display: none; animation: fadeIn .4s ease; }
   .page.active { display: block; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ─── HOME PAGE ─────────────────────────────────────────── */
   .hero {
     background: linear-gradient(135deg, var(--crimson-deep) 0%, var(--crimson) 50%, #b82020 100%);
     position: relative; overflow: hidden;
@@ -192,7 +187,6 @@
   .hero-badge .big { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--crimson-deep); display: block; }
   .hero-badge .small { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson-deep); }
 
-  /* Stats strip */
   .stats-strip {
     background: var(--dark); display: flex;
     justify-content: center; align-items: center; gap: 0;
@@ -207,7 +201,6 @@
   .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--gold-light); display: block; }
   .stat-label { font-size: 0.78rem; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
 
-  /* Why section */
   .section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
   .section-title {
     font-family: 'Playfair Display', serif;
@@ -234,7 +227,6 @@
   .feature-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--crimson); margin-bottom: 10px; }
   .feature-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
 
-  /* Featured products strip */
   .feat-prod-strip { background: linear-gradient(180deg, #fff 0%, var(--cream) 100%); padding: 60px 0; }
   .feat-prod-strip .inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
@@ -247,7 +239,6 @@
   .products-scroll::-webkit-scrollbar-track { background: var(--border); border-radius: 3px; }
   .products-scroll::-webkit-scrollbar-thumb { background: var(--crimson); border-radius: 3px; }
 
-  /* ─── ABOUT PAGE ─────────────────────────────────────────── */
   .about-hero {
     background: linear-gradient(135deg, var(--crimson-deep) 0%, var(--crimson) 100%);
     padding: 100px 40px 80px;
@@ -283,7 +274,6 @@
   }
   .about-text ul li::before { content: '●'; color: var(--gold); font-size: 0.6rem; }
 
-  /* ─── PRODUCTS PAGE ────────────────────────────────────── */
   .products-hero {
     background: var(--crimson-deep); padding: 60px 40px 40px;
     text-align: center;
@@ -312,7 +302,6 @@
     max-width: 1280px; margin: 0 auto;
   }
 
-  /* ─── PRODUCT CARD ──────────────────────────────────────── */
   .prod-card {
     background: #fff; border-radius: 14px;
     border: 1px solid var(--border);
@@ -376,7 +365,6 @@
   }
   .add-cart-btn:hover { background: var(--crimson-deep); transform: translateY(-1px); }
 
-  /* ─── CART SIDEBAR ──────────────────────────────────────── */
   .cart-overlay {
     position: fixed; inset: 0; background: rgba(0,0,0,.5);
     z-index: 1999; display: none; backdrop-filter: blur(2px);
@@ -422,7 +410,6 @@
   }
   .checkout-btn:hover { background: var(--crimson-deep); }
 
-  /* ─── CHECKOUT MODAL ────────────────────────────────────── */
   .modal-overlay {
     position: fixed; inset: 0; background: rgba(0,0,0,.6);
     z-index: 3000; display: none; align-items: center; justify-content: center;
@@ -470,13 +457,11 @@
   }
   .place-order-btn:hover { background: var(--crimson-deep); }
 
-  /* ─── SUCCESS ────────────────────────────────────────────── */
   .success-modal { text-align: center; }
   .success-icon { font-size: 4rem; margin-bottom: 16px; display: block; }
   .success-modal h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #16a34a; margin-bottom: 10px; }
   .success-modal p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
 
-  /* ─── FOOTER ─────────────────────────────────────────────── */
   footer {
     background: var(--dark); color: #ccc;
     padding: 60px 40px 30px;
@@ -503,7 +488,6 @@
     max-width: 1200px; margin: 0 auto;
   }
 
-  /* ─── WHATSAPP FAB ───────────────────────────────────────── */
   .wa-fab {
     position: fixed; bottom: 30px; right: 30px; z-index: 9999;
     width: 60px; height: 60px; border-radius: 50%;
@@ -527,7 +511,6 @@
   }
   .wa-fab:hover .wa-tooltip { opacity: 1; }
 
-  /* ─── SEARCH RESULTS ────────────────────────────────────── */
   .search-results {
     position: absolute; top: calc(100% + 6px); left: 0; right: 0;
     background: #fff; border: 1px solid var(--border); border-radius: 10px;
@@ -548,7 +531,6 @@
   .sr-item .sr-cat { font-size: 0.75rem; color: var(--muted); }
   .sr-item .sr-price { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--crimson); margin-left: auto; }
 
-  /* ─── TOAST ────────────────────────────────────────────── */
   .toast {
     position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px);
     background: var(--crimson-deep); color: #fff; padding: 12px 24px; border-radius: 8px;
@@ -574,28 +556,25 @@
 </head>
 <body>
 
-<!-- Announcement Bar -->
 <div class="announce-bar">
   🚚 <strong>Free Delivery</strong> across Pakistan on orders totaling <strong>Rs. 4,000 and above!</strong> &nbsp;·&nbsp; Cash on Delivery Available
 </div>
 
-<!-- Social Bar -->
 <div class="social-bar">
   <span class="tagline">Premium Basmati Rice — Straight from the Fields</span>
   <div class="social-icons">
-    <a href="https://www.facebook.com/share/1BBqATP19T/" target="_blank" title="Facebook" aria-label="Facebook">
+    <a href="https://www.facebook.com/share/1BBqATP19T/" target="_blank" title="Facebook">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
     </a>
-    <a href="https://www.instagram.com/aqaabrice?igsh=eWk1ZHR0NjAyb24y" target="_blank" title="Instagram" aria-label="Instagram">
+    <a href="https://www.instagram.com/aqaabrice?igsh=eWk1ZHR0NjAyb24y" target="_blank" title="Instagram">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5" stroke-width="3"/></svg>
     </a>
-    <a href="https://wa.me/923222442014" target="_blank" title="WhatsApp" aria-label="WhatsApp">
+    <a href="https://wa.me/923222442014" target="_blank" title="WhatsApp">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
   </div>
 </div>
 
-<!-- Navigation -->
 <nav>
   <a class="nav-logo" href="#" onclick="showPage('home')">
     <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -603,15 +582,13 @@
       <path d="M18 8 C18 8 10 14 10 20 C10 24 13.5 27 18 27 C22.5 27 26 24 26 20 C26 14 18 8 18 8Z" fill="#c9960c"/>
       <ellipse cx="18" cy="20" rx="5" ry="4" fill="#8B0000"/>
     </svg>
-    Aqaab<span>&nbsp;Rice</span>
+    Aqaab <span>&nbsp;Rice</span>
   </a>
-
   <div class="nav-center">
     <a onclick="showPage('home')" id="nav-home" class="active">Home</a>
     <a onclick="showPage('about')" id="nav-about">About</a>
     <a onclick="showPage('products')" id="nav-products">Products</a>
   </div>
-
   <div class="nav-right">
     <div class="search-wrap">
       <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -626,7 +603,7 @@
   </div>
 </nav>
 
-<!-- ══════════════ HOME PAGE ══════════════ -->
+<!-- HOME PAGE -->
 <div class="page active" id="page-home">
   <div class="hero">
     <div class="hero-content">
@@ -651,7 +628,6 @@
     </svg>
   </div>
 
-  <!-- Stats strip -->
   <div class="stats-strip">
     <div class="stat-item"><span class="stat-num">11+</span><span class="stat-label">Rice Varieties</span></div>
     <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Pure & Natural</span></div>
@@ -659,7 +635,6 @@
     <div class="stat-item"><span class="stat-num">🚚</span><span class="stat-label">Fast Delivery</span></div>
   </div>
 
-  <!-- Features -->
   <div class="section">
     <p class="section-title">Why Choose Aqaab?</p>
     <div class="divider"></div>
@@ -672,7 +647,6 @@
     </div>
   </div>
 
-  <!-- Featured products -->
   <div class="feat-prod-strip">
     <div class="inner">
       <p class="section-title">Bestsellers</p>
@@ -685,18 +659,17 @@
     </div>
   </div>
 
-  <!-- CTA band -->
   <div style="background:linear-gradient(135deg,var(--crimson-deep),var(--crimson));padding:60px 40px;text-align:center">
     <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;color:#fff;margin-bottom:16px">Order via WhatsApp</h2>
     <p style="color:rgba(255,255,255,.8);max-width:500px;margin:0 auto 28px;font-size:1rem;line-height:1.7">Have questions or want to place a bulk order? Chat with us directly on WhatsApp for instant assistance.</p>
-    <a href="https://wa.me/923222442014?text=Hello!%20I%20would%20like%20to%20order%20Aqaab%20Rice." target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;transition:opacity .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+    <a href="https://wa.me/923222442014?text=Hello!%20I%20would%20like%20to%20order%20Aqaab%20Rice." target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase">
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Chat on WhatsApp
     </a>
   </div>
 </div>
 
-<!-- ══════════════ ABOUT PAGE ══════════════ -->
+<!-- ABOUT PAGE -->
 <div class="page" id="page-about">
   <div class="about-hero">
     <h1>Our Story</h1>
@@ -725,7 +698,6 @@
       </div>
     </div>
   </div>
-
   <div style="background:#fff;padding:60px 40px">
     <div style="max-width:1200px;margin:0 auto">
       <p class="section-title">Our Product Range</p>
@@ -749,7 +721,6 @@
       </div>
     </div>
   </div>
-
   <div style="background:var(--crimson-deep);padding:60px 40px;text-align:center">
     <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:#fff;margin-bottom:16px">Ready to Experience the Difference?</h2>
     <p style="color:rgba(255,255,255,.75);margin-bottom:28px;font-size:1rem">Explore our full range of premium rice and order today with cash on delivery.</p>
@@ -757,24 +728,22 @@
   </div>
 </div>
 
-<!-- ══════════════ PRODUCTS PAGE ══════════════ -->
+<!-- PRODUCTS PAGE -->
 <div class="page" id="page-products">
   <div class="products-hero">
     <h1>Our Products</h1>
     <p>Premium quality grains delivered to your door</p>
   </div>
-
   <div class="cat-tabs">
     <button class="cat-tab active" onclick="filterCat('all', this)">All Products</button>
-    <button class="cat-tab" onclick="filterCat('rice', this)"> Basmati Rice</button>
-    <button class="cat-tab" onclick="filterCat('brown-rice', this)"> Brown Rice</button>
-    <button class="cat-tab" onclick="filterCat('chai-patt', this)"> Chai Patti</button>
+    <button class="cat-tab" onclick="filterCat('rice', this)">🍚 Rice</button>
+    <button class="cat-tab" onclick="filterCat('brown-rice', this)">🌿 Brown Rice</button>
+    <button class="cat-tab" onclick="filterCat('chai-patt', this)">🫖 Chai Patt</button>
   </div>
-
   <div class="products-grid" id="products-grid"></div>
 </div>
 
-<!-- ══════════════ CART SIDEBAR ══════════════ -->
+<!-- CART SIDEBAR -->
 <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
 <div class="cart-sidebar" id="cart-sidebar">
   <div class="cart-head">
@@ -793,20 +762,17 @@
   </div>
 </div>
 
-<!-- ══════════════ CHECKOUT MODAL ══════════════ -->
+<!-- CHECKOUT MODAL -->
 <div class="modal-overlay" id="checkout-modal">
   <div class="modal" id="checkout-content">
     <button class="modal-close" onclick="closeCheckout()">✕</button>
     <h2>Complete Your Order</h2>
     <p class="sub">Fill in your details and we'll deliver to you!</p>
-
     <div class="payment-badge">
       <span class="icon">💵</span>
       <div class="text"><div class="name">Cash on Delivery (COD)</div><div class="desc">Pay when your order arrives at your door</div></div>
     </div>
-
     <div class="order-summary" id="modal-order-summary"></div>
-
     <div class="form-group">
       <label>Full Name *</label>
       <input type="text" id="cust-name" placeholder="e.g. Ahmed Khan"/>
@@ -819,12 +785,11 @@
       <label>Delivery Address *</label>
       <textarea id="cust-address" placeholder="House/Flat No., Street, Area, City"></textarea>
     </div>
-
     <button class="place-order-btn" onclick="placeOrder()">🛒 Place Order</button>
   </div>
 </div>
 
-<!-- ══════════════ SUCCESS MODAL ══════════════ -->
+<!-- SUCCESS MODAL -->
 <div class="modal-overlay" id="success-modal">
   <div class="modal success-modal">
     <span class="success-icon">🎉</span>
@@ -835,7 +800,7 @@
   </div>
 </div>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -861,9 +826,9 @@
     </div>
     <div class="footer-col">
       <h4>Categories</h4>
-      <a onclick="showPage('products');filterCat('basmati rice',document.querySelector('.cat-tab:nth-child(2)'))">Rice</a>
-      <a onclick="showPage('products');filterCat('brown rice',document.querySelector('.cat-tab:nth-child(3)'))">Brown Rice</a>
-      <a onclick="showPage('products');filterCat('chai patti',document.querySelector('.cat-tab:nth-child(4)'))">Chai Patti</a>
+      <a onclick="showPage('products');filterCat('rice',document.querySelector('.cat-tab:nth-child(2)'))">Rice</a>
+      <a onclick="showPage('products');filterCat('brown-rice',document.querySelector('.cat-tab:nth-child(3)'))">Brown Rice</a>
+      <a onclick="showPage('products');filterCat('chai-patt',document.querySelector('.cat-tab:nth-child(4)'))">Chai Patt</a>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
@@ -879,34 +844,28 @@
 </footer>
 
 <!-- WhatsApp FAB -->
-<a class="wa-fab" href="https://wa.me/923222442014?text=Hello!%20I%27d%20like%20to%20order%20Aqaab%20Rice." target="_blank" aria-label="Chat on WhatsApp">
+<a class="wa-fab" href="https://wa.me/923222442014?text=Hello!%20I%27d%20like%20to%20order%20Aqaab%20Rice." target="_blank">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   <span class="wa-tooltip">Chat with us!</span>
 </a>
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
 
 <script>
-// ─── PRODUCT DATA ────────────────────────────────────
 const products = [
-  // RICE
-  { id: 1, name: 'Supreme', subtitle: '1121 Steamed Basmati Rice', cat: 'rice', price: 400, icon: '', badge: 'Premium' },
-  { id: 2, name: 'Riwaiti', subtitle: 'Traditional Basmati Rice', cat: 'rice', price: 380, icon: '', badge: null },
-  { id: 3, name: 'Premium', subtitle: 'Long Grain Basmati', cat: 'rice', price: 360, icon: '', badge: null },
-  { id: 4, name: 'Classic', subtitle: 'Classic Basmati Rice', cat: 'rice', price: 330, icon: '', badge: null },
-  { id: 5, name: 'Yadgaar', subtitle: 'Heritage Basmati Blend', cat: 'rice', price: 300, icon: '', badge: null },
-  { id: 6, name: 'Short Grain', subtitle: 'Premium Short Grain Rice', cat: 'rice', price: 270, icon: '', badge: null },
-  { id: 7, name: 'Daaghi', subtitle: 'Perfect for Biryani', cat: 'rice', price: 280, icon: '', badge: 'Biryani' },
-  // BROWN RICE
-  { id: 8, name: 'B-1 Brown Rice', subtitle: 'Whole Grain Brown Rice', cat: 'rice', price: 230, icon: '', badge: 'Healthy' },
-  { id: 9, name: 'B-2 Brown Rice', subtitle: 'Nutritious Brown Basmati', cat: 'rice', price: 180, icon: '', badge: null },
-  // SELLA
-  { id: 10, name: 'Sella Gold', subtitle: 'XXXL Sella ', cat: 'rice', price: 380, icon: '', badge: 'Gold' },
-  { id: 11, name: 'Sella Silver', subtitle: 'XXl Sella', cat: 'rice', price: 350, icon: '', badge: null },
-  // CHAI PATT
-  { id: 12, name: 'Chai Patti Classic', subtitle: 'Aromatic Tea Leaves', cat: 'chai-patti', price: 250, icon: '🫖', badge: 'Aromatic' },
-  { id: 13, name: 'Chai Patti Premium', subtitle: 'Premium Blend Tea Leaves', cat: 'chai-patti', price: 350, icon: '', badge: 'Premium' },
+  { id: 1, name: 'Royal Diamond', subtitle: '1121 Steamed Basmati Rice', cat: 'rice', price: 400, icon: '🌾', badge: 'Premium' },
+  { id: 2, name: 'Riwaiti', subtitle: 'Traditional Basmati Rice', cat: 'rice', price: 380, icon: '🍚', badge: null },
+  { id: 3, name: 'Premium', subtitle: 'Long Grain Basmati', cat: 'rice', price: 360, icon: '✨', badge: null },
+  { id: 4, name: 'Classic', subtitle: 'Classic Basmati Rice', cat: 'rice', price: 330, icon: '🌾', badge: null },
+  { id: 5, name: 'Yadgaar', subtitle: 'Heritage Basmati Blend', cat: 'rice', price: 300, icon: '🏺', badge: null },
+  { id: 6, name: 'Short Grain', subtitle: 'Premium Short Grain Rice', cat: 'rice', price: 270, icon: '🫘', badge: null },
+  { id: 7, name: 'Daaghi', subtitle: 'Perfect for Biryani', cat: 'rice', price: 280, icon: '🍛', badge: 'Biryani' },
+  { id: 8, name: 'B-1 Brown Rice', subtitle: 'Whole Grain Brown Rice', cat: 'brown-rice', price: 230, icon: '🌿', badge: 'Healthy' },
+  { id: 9, name: 'B-2 Brown Rice', subtitle: 'Nutritious Brown Basmati', cat: 'brown-rice', price: 180, icon: '🌱', badge: null },
+  { id: 10, name: 'Sella Gold', subtitle: 'Golden Sella Basmati', cat: 'rice', price: 380, icon: '🥇', badge: 'Gold' },
+  { id: 11, name: 'Sella Silver', subtitle: 'Silver Sella Basmati', cat: 'rice', price: 350, icon: '🥈', badge: null },
+  { id: 12, name: 'Chai Patt Classic', subtitle: 'Aromatic Tea Leaves', cat: 'chai-patt', price: 250, icon: '🫖', badge: 'Aromatic' },
+  { id: 13, name: 'Chai Patt Premium', subtitle: 'Premium Blend Tea Leaves', cat: 'chai-patt', price: 350, icon: '🍵', badge: 'Premium' },
 ];
 
 const CATEGORY_COLORS = {
@@ -917,7 +876,6 @@ const CATEGORY_COLORS = {
 
 let cart = [];
 
-// ─── RENDER HELPERS ─────────────────────────────────
 function buildCard(p, mini = false) {
   const bg = CATEGORY_COLORS[p.cat] || '#f5f5f5';
   return `
@@ -965,7 +923,6 @@ function renderFeatured() {
   document.getElementById('home-featured').innerHTML = featured.map(p => buildCard(p, true)).join('');
 }
 
-// ─── QUANTITY ────────────────────────────────────────
 function changeQty(id, delta) {
   const inp = document.getElementById('qty-' + id);
   const p = products.find(x => x.id === id);
@@ -981,7 +938,6 @@ function updateTotal(id, price) {
   document.getElementById('total-' + id).textContent = 'Rs. ' + (v * price).toLocaleString();
 }
 
-// ─── CART ────────────────────────────────────────────
 function addToCart(id) {
   const p = products.find(x => x.id === id);
   const qty = parseInt(document.getElementById('qty-' + id).value) || 1;
@@ -1022,7 +978,6 @@ function updateCartUI() {
 function openCart() { document.getElementById('cart-overlay').classList.add('open'); document.getElementById('cart-sidebar').classList.add('open'); }
 function closeCart() { document.getElementById('cart-overlay').classList.remove('open'); document.getElementById('cart-sidebar').classList.remove('open'); }
 
-// ─── CHECKOUT ────────────────────────────────────────
 function openCheckout() {
   if (!cart.length) { showToast('🛒 Cart is empty!'); return; }
   closeCart();
@@ -1051,14 +1006,12 @@ function placeOrder() {
 }
 function closeSuccess() { document.getElementById('success-modal').classList.remove('open'); showPage('home'); }
 
-// ─── FILTER ──────────────────────────────────────────
 function filterCat(cat, btn) {
   document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
   if (btn) btn.classList.add('active');
   renderProducts(cat === 'all' ? products : products.filter(p => p.cat === cat));
 }
 
-// ─── SEARCH ──────────────────────────────────────────
 function handleSearch(q) {
   const el = document.getElementById('search-results');
   if (!q.trim()) { el.classList.remove('show'); return; }
@@ -1080,7 +1033,6 @@ function goToProduct(id) {
   setTimeout(() => { const el = document.getElementById('card-' + id); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 200);
 }
 
-// ─── NAVIGATION ──────────────────────────────────────
 function showPage(page) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-center a').forEach(a => a.classList.remove('active'));
@@ -1089,14 +1041,12 @@ function showPage(page) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ─── TOAST ───────────────────────────────────────────
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2800);
 }
 
-// ─── INIT ─────────────────────────────────────────────
 renderProducts(products);
 renderFeatured();
 </script>
