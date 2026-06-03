@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aqaab Rice – Premium Basmati Rice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --crimson: #8B0000;
+    --crimson-deep: #5a0000;
+    --crimson-mid: #a81010;
+    --gold: #c9960c;
+    --gold-light: #e8b830;
+    --cream: #faf7f2;
+    --warm-white: #fff9f0;
+    --dark: #1a0a0a;
+    --text: #2c1a1a;
+    --muted: #7a6060;
+    --border: #e8d8c8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+  /* ─── ANNOUNCEMENT BAR ─────────────────────────────────── */
+  .announce-bar {
+    background: var(--crimson-deep);
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .announce-bar strong { color: var(--gold-light); }
+
+  /* ─── TOP SOCIAL BAR ───────────────────────────────────── */
+  .social-bar {
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 40px;
+    gap: 12px;
+  }
+  .social-bar .tagline { color: #ccc; font-size: 0.78rem; font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; }
+  .social-icons { display: flex; gap: 14px; align-items: center; }
+  .social-icons a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color .25s, transform .25s;
+    display: flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.07);
+  }
+  .social-icons a:hover { color: var(--gold-light); transform: scale(1.15); background: rgba(255,255,255,.14); }
+
+  /* ─── NAVBAR ──────────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 999;
+    background: #fff;
+    border-bottom: 3px solid var(--crimson);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+    height: 72px;
+    box-shadow: 0 2px 20px rgba(139,0,0,.15);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 900;
+    color: var(--crimson);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-logo-icon { width: 36px; height: 36px; }
+
+  .nav-center { display: flex; gap: 4px; align-items: center; }
+  .nav-center a {
+    padding: 8px 18px;
+    font-size: 0.9rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--text); text-decoration: none;
+    border-radius: 4px;
+    transition: background .2s, color .2s;
+    cursor: pointer;
+  }
+  .nav-center a:hover, .nav-center a.active { background: var(--crimson); color: #fff; }
+
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .search-wrap {
+    display: flex; align-items: center;
+    background: #f5f0eb; border-radius: 24px;
+    border: 1.5px solid var(--border);
+    padding: 6px 14px; gap: 8px;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .search-wrap:focus-within { border-color: var(--crimson); box-shadow: 0 0 0 3px rgba(139,0,0,.1); }
+  .search-wrap input {
+    border: none; background: transparent; outline: none;
+    font-family: 'Barlow', sans-serif; font-size: 0.88rem; color: var(--text);
+    width: 160px;
+  }
+  .search-wrap svg { color: var(--muted); flex-shrink: 0; }
+
+  .cart-btn {
+    position: relative; cursor: pointer;
+    background: var(--crimson); color: #fff;
+    border: none; border-radius: 8px;
+    padding: 8px 16px; display: flex; align-items: center; gap: 7px;
+    font-family: 'Barlow', sans-serif; font-size: 0.88rem; font-weight: 600;
+    transition: background .2s, transform .15s;
+  }
+  .cart-btn:hover { background: var(--crimson-deep); transform: translateY(-1px); }
+  .cart-count {
+    position: absolute; top: -6px; right: -6px;
+    background: var(--gold); color: #fff; border-radius: 50%;
+    width: 18px; height: 18px; font-size: 0.7rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    display: none;
+  }
+  .cart-count.show { display: flex; }
+
+  /* ─── PAGES ────────────────────────────────────────────── */
+  .page { display: none; animation: fadeIn .4s ease; }
+  .page.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ─── HOME PAGE ─────────────────────────────────────────── */
+  .hero {
+    background: linear-gradient(135deg, var(--crimson-deep) 0%, var(--crimson) 50%, #b82020 100%);
+    position: relative; overflow: hidden;
+    min-height: 88vh; display: flex; align-items: center;
+    padding: 60px 40px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z' fill='rgba(255,255,255,0.025)'/%3E%3C/svg%3E") repeat;
+    background-size: 80px 80px;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 560px; }
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before { content: ''; width: 36px; height: 2px; background: var(--gold); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; line-height: 1.05;
+    color: #fff; margin-bottom: 24px;
+  }
+  .hero h1 em { color: var(--gold-light); font-style: italic; }
+  .hero p { color: rgba(255,255,255,.8); font-size: 1.1rem; font-weight: 300; line-height: 1.7; margin-bottom: 36px; max-width: 440px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--dark);
+    padding: 14px 32px; border-radius: 6px; border: none;
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; transition: background .2s, transform .15s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: #fff;
+    padding: 14px 32px; border-radius: 6px; border: 2px solid rgba(255,255,255,.5);
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; transition: border-color .2s, background .2s;
+  }
+  .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+
+  .hero-visual {
+    position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    width: 55%; max-width: 700px; opacity: 0.18;
+    pointer-events: none;
+  }
+  .hero-badge {
+    position: absolute; right: 60px; top: 80px; z-index: 3;
+    background: var(--gold); border-radius: 50%;
+    width: 130px; height: 130px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 12px; box-shadow: 0 8px 30px rgba(0,0,0,.3);
+    animation: spin-slow 20s linear infinite;
+  }
+  @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .hero-badge-inner { animation: spin-slow 20s linear infinite reverse; text-align: center; }
+  .hero-badge .big { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--crimson-deep); display: block; }
+  .hero-badge .small { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson-deep); }
+
+  /* Stats strip */
+  .stats-strip {
+    background: var(--dark); display: flex;
+    justify-content: center; align-items: center; gap: 0;
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    text-align: center; padding: 24px 48px;
+    border-right: 1px solid rgba(255,255,255,.1);
+    flex: 1; min-width: 150px;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--gold-light); display: block; }
+  .stat-label { font-size: 0.78rem; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+
+  /* Why section */
+  .section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; font-weight: 900; color: var(--crimson);
+    margin-bottom: 8px; text-align: center;
+  }
+  .section-sub { text-align: center; color: var(--muted); font-size: 1rem; margin-bottom: 52px; font-weight: 300; }
+  .divider { width: 60px; height: 3px; background: var(--gold); margin: 12px auto 24px; }
+
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;
+  }
+  .feature-card {
+    background: #fff; border-radius: 12px; padding: 32px 24px;
+    border: 1px solid var(--border);
+    text-align: center; transition: transform .25s, box-shadow .25s;
+  }
+  .feature-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(139,0,0,.1); }
+  .feature-icon {
+    width: 64px; height: 64px; background: #fef0e8; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; margin: 0 auto 20px;
+  }
+  .feature-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--crimson); margin-bottom: 10px; }
+  .feature-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+  /* Featured products strip */
+  .feat-prod-strip { background: linear-gradient(180deg, #fff 0%, var(--cream) 100%); padding: 60px 0; }
+  .feat-prod-strip .inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  .products-scroll {
+    display: flex; gap: 20px; overflow-x: auto;
+    padding-bottom: 16px; scrollbar-width: thin;
+    scrollbar-color: var(--crimson) var(--border);
+  }
+  .products-scroll::-webkit-scrollbar { height: 6px; }
+  .products-scroll::-webkit-scrollbar-track { background: var(--border); border-radius: 3px; }
+  .products-scroll::-webkit-scrollbar-thumb { background: var(--crimson); border-radius: 3px; }
+
+  /* ─── ABOUT PAGE ─────────────────────────────────────────── */
+  .about-hero {
+    background: linear-gradient(135deg, var(--crimson-deep) 0%, var(--crimson) 100%);
+    padding: 100px 40px 80px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .about-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,.05) 0%, transparent 70%); }
+  .about-hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: #fff; margin-bottom: 20px; position: relative; }
+  .about-hero p { color: rgba(255,255,255,.8); font-size: 1.15rem; font-weight: 300; max-width: 600px; margin: 0 auto; line-height: 1.8; position: relative; }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-img-wrap {
+    background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-mid) 100%);
+    border-radius: 20px; aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .about-img-wrap::after {
+    content: '🌾';
+    font-size: 8rem; opacity: .3;
+    position: absolute; bottom: -10px; right: -10px;
+  }
+  .about-img-inner { text-align: center; color: #fff; padding: 30px; position: relative; z-index: 1; }
+  .about-img-inner .big-year { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; color: var(--gold-light); display: block; }
+  .about-img-inner span { font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: .8; }
+
+  .about-text h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--crimson); margin-bottom: 20px; }
+  .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; font-size: 1rem; }
+  .about-text ul { list-style: none; margin-top: 20px; }
+  .about-text ul li {
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px;
+    color: var(--text); font-weight: 500;
+  }
+  .about-text ul li::before { content: '●'; color: var(--gold); font-size: 0.6rem; }
+
+  /* ─── PRODUCTS PAGE ────────────────────────────────────── */
+  .products-hero {
+    background: var(--crimson-deep); padding: 60px 40px 40px;
+    text-align: center;
+  }
+  .products-hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: #fff; margin-bottom: 12px; }
+  .products-hero p { color: rgba(255,255,255,.7); font-size: 1rem; }
+
+  .cat-tabs {
+    display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+    padding: 28px 40px;
+    background: #fff; border-bottom: 1px solid var(--border);
+    position: sticky; top: 72px; z-index: 100;
+  }
+  .cat-tab {
+    padding: 10px 24px; border-radius: 24px; border: 2px solid var(--border);
+    background: #fff; font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.95rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; transition: all .2s; color: var(--muted);
+  }
+  .cat-tab:hover { border-color: var(--crimson); color: var(--crimson); }
+  .cat-tab.active { background: var(--crimson); border-color: var(--crimson); color: #fff; }
+
+  .products-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px; padding: 40px;
+    max-width: 1280px; margin: 0 auto;
+  }
+
+  /* ─── PRODUCT CARD ──────────────────────────────────────── */
+  .prod-card {
+    background: #fff; border-radius: 14px;
+    border: 1px solid var(--border);
+    overflow: hidden; transition: transform .25s, box-shadow .25s;
+    cursor: default;
+  }
+  .prod-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(139,0,0,.12); }
+  .prod-img {
+    height: 200px; display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .prod-img-inner { font-size: 5rem; line-height: 1; }
+  .prod-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--crimson); color: #fff;
+    font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 4px;
+  }
+  .prod-body { padding: 20px 20px 16px; }
+  .prod-category { font-size: 0.72rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; }
+  .prod-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .prod-subtitle { font-size: 0.82rem; color: var(--muted); margin-bottom: 14px; font-style: italic; }
+  .prod-price-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .prod-price { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--crimson); }
+  .prod-price span { font-size: 0.75rem; color: var(--muted); font-weight: 400; }
+
+  .qty-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .qty-label { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
+  .qty-wrap {
+    display: flex; align-items: center; border: 1.5px solid var(--border);
+    border-radius: 8px; overflow: hidden; flex: 1;
+  }
+  .qty-btn {
+    background: #f5f0eb; border: none; width: 32px; height: 32px;
+    font-size: 1.1rem; cursor: pointer; color: var(--crimson); font-weight: 700;
+    transition: background .15s;
+  }
+  .qty-btn:hover { background: var(--crimson); color: #fff; }
+  .qty-input {
+    flex: 1; border: none; outline: none; text-align: center;
+    font-family: 'Barlow', sans-serif; font-size: 0.92rem; font-weight: 600;
+    color: var(--text); background: #fff; padding: 0;
+    height: 32px;
+  }
+  .total-row {
+    background: #fef8f0; border-radius: 8px; padding: 10px 14px;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 14px; border: 1px solid #f0e0c8;
+  }
+  .total-label { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+  .total-amount { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--crimson); }
+
+  .add-cart-btn {
+    width: 100%; padding: 12px; border: none; border-radius: 8px;
+    background: var(--crimson); color: #fff;
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; transition: background .2s, transform .15s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .add-cart-btn:hover { background: var(--crimson-deep); transform: translateY(-1px); }
+
+  /* ─── CART SIDEBAR ──────────────────────────────────────── */
+  .cart-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,.5);
+    z-index: 1999; display: none; backdrop-filter: blur(2px);
+  }
+  .cart-overlay.open { display: block; }
+  .cart-sidebar {
+    position: fixed; right: 0; top: 0; bottom: 0; width: 420px; max-width: 95vw;
+    background: #fff; z-index: 2000;
+    transform: translateX(100%); transition: transform .35s cubic-bezier(.4,0,.2,1);
+    display: flex; flex-direction: column;
+  }
+  .cart-sidebar.open { transform: translateX(0); }
+  .cart-head {
+    padding: 24px; border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .cart-head h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--crimson); }
+  .cart-close { background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--muted); }
+  .cart-items { flex: 1; overflow-y: auto; padding: 20px 24px; }
+  .cart-empty { text-align: center; padding: 60px 20px; color: var(--muted); }
+  .cart-empty .big-icon { font-size: 3.5rem; margin-bottom: 12px; }
+  .cart-item {
+    display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .cart-item-icon { font-size: 2.2rem; flex-shrink: 0; }
+  .cart-item-info { flex: 1; }
+  .cart-item-name { font-weight: 600; font-size: 0.95rem; color: var(--text); }
+  .cart-item-meta { font-size: 0.8rem; color: var(--muted); margin-top: 3px; }
+  .cart-item-price { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--crimson); }
+  .cart-item-remove { background: none; border: none; color: #ccc; cursor: pointer; font-size: 1rem; padding: 2px; }
+  .cart-item-remove:hover { color: var(--crimson); }
+
+  .cart-foot { padding: 20px 24px; border-top: 1px solid var(--border); }
+  .cart-total-row { display: flex; justify-content: space-between; font-size: 1rem; font-weight: 600; margin-bottom: 16px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .cart-total-row .amt { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--crimson); }
+  .checkout-btn {
+    width: 100%; padding: 14px; border: none; border-radius: 8px;
+    background: var(--crimson); color: #fff;
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; transition: background .2s;
+  }
+  .checkout-btn:hover { background: var(--crimson-deep); }
+
+  /* ─── CHECKOUT MODAL ────────────────────────────────────── */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,.6);
+    z-index: 3000; display: none; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: #fff; border-radius: 16px; width: 480px; max-width: 100%;
+    padding: 36px; position: relative;
+    box-shadow: 0 30px 80px rgba(0,0,0,.25);
+    animation: popIn .3s cubic-bezier(.4,0,.2,1);
+  }
+  @keyframes popIn { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: scale(1); } }
+  .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--muted); }
+  .modal h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--crimson); margin-bottom: 6px; }
+  .modal .sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 0.83rem; font-weight: 600; color: var(--text); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .form-group input, .form-group textarea {
+    width: 100%; padding: 11px 14px;
+    border: 1.5px solid var(--border); border-radius: 8px;
+    font-family: 'Barlow', sans-serif; font-size: 0.93rem; color: var(--text);
+    outline: none; transition: border-color .2s;
+    background: #fafafa;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--crimson); background: #fff; }
+  .form-group textarea { resize: none; height: 90px; }
+  .payment-badge {
+    background: #f5f5f5; border-radius: 8px; padding: 12px 16px;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+    border: 1.5px solid #e0e0e0;
+  }
+  .payment-badge .icon { font-size: 1.5rem; }
+  .payment-badge .text .name { font-weight: 700; font-size: 0.95rem; }
+  .payment-badge .text .desc { font-size: 0.78rem; color: var(--muted); }
+  .order-summary { background: #fef8f0; border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; }
+  .order-summary .row { display: flex; justify-content: space-between; font-size: 0.88rem; padding: 4px 0; }
+  .order-summary .row.total { border-top: 1px dashed var(--border); padding-top: 10px; margin-top: 6px; font-weight: 700; font-size: 1rem; color: var(--crimson); }
+  .place-order-btn {
+    width: 100%; padding: 14px; border: none; border-radius: 8px;
+    background: var(--crimson); color: #fff;
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; transition: background .2s;
+  }
+  .place-order-btn:hover { background: var(--crimson-deep); }
+
+  /* ─── SUCCESS ────────────────────────────────────────────── */
+  .success-modal { text-align: center; }
+  .success-icon { font-size: 4rem; margin-bottom: 16px; display: block; }
+  .success-modal h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #16a34a; margin-bottom: 10px; }
+  .success-modal p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+
+  /* ─── FOOTER ─────────────────────────────────────────────── */
+  footer {
+    background: var(--dark); color: #ccc;
+    padding: 60px 40px 30px;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; max-width: 1200px; margin: 0 auto 40px; }
+  .footer-brand .name { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #fff; font-weight: 900; }
+  .footer-brand .name span { color: var(--gold); }
+  .footer-brand p { color: #888; font-size: 0.88rem; line-height: 1.7; margin-top: 12px; }
+  .footer-col h4 { color: #fff; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-col a, .footer-col p { display: block; color: #888; font-size: 0.88rem; text-decoration: none; margin-bottom: 10px; cursor: pointer; transition: color .2s; }
+  .footer-col a:hover { color: var(--gold-light); }
+  .footer-social { display: flex; gap: 12px; margin-top: 8px; }
+  .footer-social a {
+    width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.08);
+    display: flex; align-items: center; justify-content: center;
+    color: #aaa; text-decoration: none; font-size: 1rem;
+    transition: background .2s, color .2s;
+  }
+  .footer-social a:hover { background: var(--crimson); color: #fff; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 24px; text-align: center;
+    color: #555; font-size: 0.8rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  /* ─── WHATSAPP FAB ───────────────────────────────────────── */
+  .wa-fab {
+    position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #25d366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 30px rgba(37,211,102,.5);
+    text-decoration: none; transition: transform .25s, box-shadow .25s;
+    animation: wa-pulse 2.5s ease infinite;
+  }
+  .wa-fab:hover { transform: scale(1.12); box-shadow: 0 12px 40px rgba(37,211,102,.7); }
+  @keyframes wa-pulse {
+    0%, 100% { box-shadow: 0 8px 30px rgba(37,211,102,.5); }
+    50% { box-shadow: 0 8px 30px rgba(37,211,102,.5), 0 0 0 12px rgba(37,211,102,.15); }
+  }
+  .wa-fab svg { width: 32px; height: 32px; fill: #fff; }
+  .wa-tooltip {
+    position: absolute; right: 72px; top: 50%; transform: translateY(-50%);
+    background: var(--dark); color: #fff; padding: 6px 12px; border-radius: 6px;
+    font-size: 0.8rem; white-space: nowrap; pointer-events: none;
+    opacity: 0; transition: opacity .2s;
+  }
+  .wa-fab:hover .wa-tooltip { opacity: 1; }
+
+  /* ─── SEARCH RESULTS ────────────────────────────────────── */
+  .search-results {
+    position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+    background: #fff; border: 1px solid var(--border); border-radius: 10px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.12); z-index: 5000;
+    max-height: 320px; overflow-y: auto; display: none;
+  }
+  .search-wrap { position: relative; }
+  .search-results.show { display: block; }
+  .sr-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px; cursor: pointer; transition: background .15s;
+    border-bottom: 1px solid #f5f0eb;
+  }
+  .sr-item:last-child { border-bottom: none; }
+  .sr-item:hover { background: #fef8f0; }
+  .sr-item .sr-icon { font-size: 1.6rem; }
+  .sr-item .sr-name { font-weight: 600; font-size: 0.9rem; }
+  .sr-item .sr-cat { font-size: 0.75rem; color: var(--muted); }
+  .sr-item .sr-price { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; color: var(--crimson); margin-left: auto; }
+
+  /* ─── TOAST ────────────────────────────────────────────── */
+  .toast {
+    position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: var(--crimson-deep); color: #fff; padding: 12px 24px; border-radius: 8px;
+    font-weight: 600; font-size: 0.9rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,.2);
+    opacity: 0; transition: opacity .3s, transform .3s; z-index: 9998; pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  @media(max-width:768px) {
+    nav { padding: 0 16px; }
+    .nav-center { display: none; }
+    .hero { padding: 40px 20px; min-height: 70vh; }
+    .hero-badge { display: none; }
+    .section { padding: 50px 20px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); padding: 20px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .social-bar { padding: 8px 16px; }
+    .stats-strip .stat-item { padding: 18px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announce-bar">
+  🚚 <strong>Free Delivery</strong> across Pakistan on orders totaling <strong>Rs. 4,000 and above!</strong> &nbsp;·&nbsp; Cash on Delivery Available
+</div>
+
+<!-- Social Bar -->
+<div class="social-bar">
+  <span class="tagline">Premium Basmati Rice — Straight from the Fields</span>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/share/1BBqATP19T/" target="_blank" title="Facebook" aria-label="Facebook">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/aqaabrice?igsh=eWk1ZHR0NjAyb24y" target="_blank" title="Instagram" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5" stroke-width="3"/></svg>
+    </a>
+    <a href="https://wa.me/923222442014" target="_blank" title="WhatsApp" aria-label="WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <a class="nav-logo" href="#" onclick="showPage('home')">
+    <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="18" fill="#8B0000"/>
+      <path d="M18 8 C18 8 10 14 10 20 C10 24 13.5 27 18 27 C22.5 27 26 24 26 20 C26 14 18 8 18 8Z" fill="#c9960c"/>
+      <ellipse cx="18" cy="20" rx="5" ry="4" fill="#8B0000"/>
+    </svg>
+    Aqaab <span>&nbsp;Rice</span>
+  </a>
+
+  <div class="nav-center">
+    <a onclick="showPage('home')" id="nav-home" class="active">Home</a>
+    <a onclick="showPage('about')" id="nav-about">About</a>
+    <a onclick="showPage('products')" id="nav-products">Products</a>
+  </div>
+
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="Search products…" oninput="handleSearch(this.value)" onblur="setTimeout(()=>closeSearch(),200)"/>
+      <div class="search-results" id="search-results"></div>
+    </div>
+    <button class="cart-btn" onclick="openCart()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Cart
+      <span class="cart-count" id="cart-count">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════ HOME PAGE ══════════════ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Premium Basmati</div>
+      <h1>Where Every<br/><em>Grain</em> Tells a<br/>Story of Purity</h1>
+      <p>From the fertile fields of Pakistan to your table — Aqaab Rice brings you the finest basmati and specialty rices, cultivated with tradition and packed with love.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="showPage('products')">Shop Now</button>
+        <button class="btn-outline" onclick="showPage('about')">Our Story</button>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-inner">
+        <span class="big">🏆</span>
+        <span class="small">Premium<br/>Quality</span>
+      </div>
+    </div>
+    <svg class="hero-visual" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="300" cy="200" rx="220" ry="180" fill="rgba(255,255,255,0.04)"/>
+      <ellipse cx="300" cy="200" rx="160" ry="130" fill="rgba(255,255,255,0.04)"/>
+      <text x="300" y="230" text-anchor="middle" font-size="140" fill="rgba(255,255,255,0.07)">🌾</text>
+    </svg>
+  </div>
+
+  <!-- Stats strip -->
+  <div class="stats-strip">
+    <div class="stat-item"><span class="stat-num">11+</span><span class="stat-label">Rice Varieties</span></div>
+    <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Pure & Natural</span></div>
+    <div class="stat-item"><span class="stat-num">COD</span><span class="stat-label">Cash on Delivery</span></div>
+    <div class="stat-item"><span class="stat-num">🚚</span><span class="stat-label">Fast Delivery</span></div>
+  </div>
+
+  <!-- Features -->
+  <div class="section">
+    <p class="section-title">Why Choose Aqaab?</p>
+    <div class="divider"></div>
+    <p class="section-sub">We bring the finest grains with uncompromising quality at every step</p>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">🌾</div><h3>Farm to Table</h3><p>Sourced directly from the finest paddy fields, ensuring freshness and authenticity in every bag.</p></div>
+      <div class="feature-card"><div class="feature-icon">✅</div><h3>Quality Assured</h3><p>Every batch is inspected and tested to meet the highest standards of purity and taste.</p></div>
+      <div class="feature-card"><div class="feature-icon">💰</div><h3>Fair Pricing</h3><p>Premium quality at honest prices. We believe everyone deserves the best rice on their table.</p></div>
+      <div class="feature-card"><div class="feature-icon">🚚</div><h3>Quick Delivery</h3><p>Cash on delivery with fast dispatch. Your order arrives fresh at your doorstep.</p></div>
+    </div>
+  </div>
+
+  <!-- Featured products -->
+  <div class="feat-prod-strip">
+    <div class="inner">
+      <p class="section-title">Bestsellers</p>
+      <div class="divider"></div>
+      <p class="section-sub" style="margin-bottom:30px">Our most loved varieties — trusted by thousands of families</p>
+      <div class="products-scroll" id="home-featured"></div>
+      <div style="text-align:center;margin-top:30px">
+        <button class="btn-primary" onclick="showPage('products')">View All Products</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA band -->
+  <div style="background:linear-gradient(135deg,var(--crimson-deep),var(--crimson));padding:60px 40px;text-align:center">
+    <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;color:#fff;margin-bottom:16px">Order via WhatsApp</h2>
+    <p style="color:rgba(255,255,255,.8);max-width:500px;margin:0 auto 28px;font-size:1rem;line-height:1.7">Have questions or want to place a bulk order? Chat with us directly on WhatsApp for instant assistance.</p>
+    <a href="https://wa.me/923222442014?text=Hello!%20I%20would%20like%20to%20order%20Aqaab%20Rice." target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;transition:opacity .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- ══════════════ ABOUT PAGE ══════════════ -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <h1>Our Story</h1>
+    <p>Born from a passion for purity and a commitment to bringing the finest grains of Pakistan to every home.</p>
+  </div>
+  <div class="section">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-img-inner">
+          <span class="big-year">🌾</span>
+          <span>Aqaab Rice</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <h2>Rooted in Tradition, Driven by Quality</h2>
+        <p>Aqaab Rice was founded with a single mission: to deliver the purest, most fragrant basmati and specialty rice directly to Pakistani families. The name "Aqaab" — meaning Eagle in Urdu — symbolizes our sharp eye for quality and precision.</p>
+        <p>We work with experienced rice cultivators across Pakistan's most fertile regions, ensuring that every grain meets our strict standards before it reaches your table.</p>
+        <p>From our signature 1121 Basmati to our nutritious Brown Rice and aromatic Chai Patt, each product line represents our dedication to bringing you the best nature has to offer.</p>
+        <ul>
+          <li>Directly sourced from premium paddy fields</li>
+          <li>Rigorous quality inspection at every stage</li>
+          <li>Hygienic packaging to preserve freshness</li>
+          <li>Multiple rice varieties for every cooking need</li>
+          <li>Cash on delivery for your convenience</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#fff;padding:60px 40px">
+    <div style="max-width:1200px;margin:0 auto">
+      <p class="section-title">Our Product Range</p>
+      <div class="divider"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:40px">
+        <div style="background:var(--cream);border-radius:12px;padding:28px;text-align:center;border:1px solid var(--border)">
+          <div style="font-size:3rem;margin-bottom:14px">🍚</div>
+          <h3 style="font-family:'Playfair Display',serif;color:var(--crimson);font-size:1.2rem;margin-bottom:10px">Premium Rice</h3>
+          <p style="color:var(--muted);font-size:0.88rem;line-height:1.6">Supreme, Riwaiti, Classic and more — long-grain fragrant basmati for every occasion.</p>
+        </div>
+        <div style="background:var(--cream);border-radius:12px;padding:28px;text-align:center;border:1px solid var(--border)">
+          <div style="font-size:3rem;margin-bottom:14px">🌿</div>
+          <h3 style="font-family:'Playfair Display',serif;color:var(--crimson);font-size:1.2rem;margin-bottom:10px">Brown Rice</h3>
+          <p style="color:var(--muted);font-size:0.88rem;line-height:1.6">Nutritious whole-grain brown rice — packed with fiber and natural goodness.</p>
+        </div>
+        <div style="background:var(--cream);border-radius:12px;padding:28px;text-align:center;border:1px solid var(--border)">
+          <div style="font-size:3rem;margin-bottom:14px">🫖</div>
+          <h3 style="font-family:'Playfair Display',serif;color:var(--crimson);font-size:1.2rem;margin-bottom:10px">Chai Patt</h3>
+          <p style="color:var(--muted);font-size:0.88rem;line-height:1.6">Aromatic tea leaves for the perfect cup of traditional Pakistani chai.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--crimson-deep);padding:60px 40px;text-align:center">
+    <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:#fff;margin-bottom:16px">Ready to Experience the Difference?</h2>
+    <p style="color:rgba(255,255,255,.75);margin-bottom:28px;font-size:1rem">Explore our full range of premium rice and order today with cash on delivery.</p>
+    <button class="btn-primary" onclick="showPage('products')">Browse Products</button>
+  </div>
+</div>
+
+<!-- ══════════════ PRODUCTS PAGE ══════════════ -->
+<div class="page" id="page-products">
+  <div class="products-hero">
+    <h1>Our Products</h1>
+    <p>Premium quality grains delivered to your door</p>
+  </div>
+
+  <div class="cat-tabs">
+    <button class="cat-tab active" onclick="filterCat('all', this)">All Products</button>
+    <button class="cat-tab" onclick="filterCat('rice', this)">🍚 Rice</button>
+    <button class="cat-tab" onclick="filterCat('brown-rice', this)">🌿 Brown Rice</button>
+    <button class="cat-tab" onclick="filterCat('chai-patt', this)">🫖 Chai Patt</button>
+  </div>
+
+  <div class="products-grid" id="products-grid"></div>
+</div>
+
+<!-- ══════════════ CART SIDEBAR ══════════════ -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-head">
+    <h2>🛒 Your Cart</h2>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <div class="cart-empty"><div class="big-icon">🛒</div><p>Your cart is empty.<br/>Add some rice to get started!</p></div>
+  </div>
+  <div class="cart-foot">
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span class="amt" id="cart-total">Rs. 0</span>
+    </div>
+    <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- ══════════════ CHECKOUT MODAL ══════════════ -->
+<div class="modal-overlay" id="checkout-modal">
+  <div class="modal" id="checkout-content">
+    <button class="modal-close" onclick="closeCheckout()">✕</button>
+    <h2>Complete Your Order</h2>
+    <p class="sub">Fill in your details and we'll deliver to you!</p>
+
+    <div class="payment-badge">
+      <span class="icon">💵</span>
+      <div class="text"><div class="name">Cash on Delivery (COD)</div><div class="desc">Pay when your order arrives at your door</div></div>
+    </div>
+
+    <div class="order-summary" id="modal-order-summary"></div>
+
+    <div class="form-group">
+      <label>Full Name *</label>
+      <input type="text" id="cust-name" placeholder="e.g. Ahmed Khan"/>
+    </div>
+    <div class="form-group">
+      <label>Phone Number *</label>
+      <input type="tel" id="cust-phone" placeholder="e.g. 03XX XXXXXXX"/>
+    </div>
+    <div class="form-group">
+      <label>Delivery Address *</label>
+      <textarea id="cust-address" placeholder="House/Flat No., Street, Area, City"></textarea>
+    </div>
+
+    <button class="place-order-btn" onclick="placeOrder()">🛒 Place Order</button>
+  </div>
+</div>
+
+<!-- ══════════════ SUCCESS MODAL ══════════════ -->
+<div class="modal-overlay" id="success-modal">
+  <div class="modal success-modal">
+    <span class="success-icon">🎉</span>
+    <h2>Order Placed!</h2>
+    <p>Thank you for your order! We've received it and will contact you shortly to confirm delivery details.</p>
+    <p style="font-size:0.85rem;color:#888;margin-top:-10px">For queries, WhatsApp us at <strong>0322-2442014</strong></p>
+    <button class="btn-primary" style="margin-top:10px" onclick="closeSuccess()">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="name">Aqaab <span>Rice</span></div>
+      <p>Premium basmati and specialty rice delivered to your doorstep across Pakistan. Quality you can taste in every grain.</p>
+      <div class="footer-social" style="margin-top:20px">
+        <a href="https://www.facebook.com/share/1BBqATP19T/" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/aqaabrice?igsh=eWk1ZHR0NjAyb24y" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5" stroke-width="3"/></svg>
+        </a>
+        <a href="https://wa.me/923222442014" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('about')">About Us</a>
+      <a onclick="showPage('products')">All Products</a>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <a onclick="showPage('products');filterCat('rice',document.querySelector('.cat-tab:nth-child(2)'))">Rice</a>
+      <a onclick="showPage('products');filterCat('brown-rice',document.querySelector('.cat-tab:nth-child(3)'))">Brown Rice</a>
+      <a onclick="showPage('products');filterCat('chai-patt',document.querySelector('.cat-tab:nth-child(4)'))">Chai Patt</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📞 0322-2442014</p>
+      <p>💬 WhatsApp available</p>
+      <a href="https://wa.me/923222442014" target="_blank">Chat with us</a>
+      <a href="https://www.instagram.com/aqaabrice" target="_blank">@aqaabrice</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Aqaab Rice. All rights reserved. | Cash on Delivery | Fast Delivery across Pakistan</p>
+  </div>
+</footer>
+
+<!-- WhatsApp FAB -->
+<a class="wa-fab" href="https://wa.me/923222442014?text=Hello!%20I%27d%20like%20to%20order%20Aqaab%20Rice." target="_blank" aria-label="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="wa-tooltip">Chat with us!</span>
+</a>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── PRODUCT DATA ────────────────────────────────────
+const products = [
+  // RICE
+  { id: 1, name: 'Royal Diamond', subtitle: '1121 Steamed Basmati Rice', cat: 'rice', price: 400, icon: '🌾', badge: 'Premium' },
+  { id: 2, name: 'Riwaiti', subtitle: 'Traditional Basmati Rice', cat: 'rice', price: 380, icon: '🍚', badge: null },
+  { id: 3, name: 'Premium', subtitle: 'Long Grain Basmati', cat: 'rice', price: 360, icon: '✨', badge: null },
+  { id: 4, name: 'Classic', subtitle: 'Classic Basmati Rice', cat: 'rice', price: 330, icon: '🌾', badge: null },
+  { id: 5, name: 'Yadgaar', subtitle: 'Heritage Basmati Blend', cat: 'rice', price: 300, icon: '🏺', badge: null },
+  { id: 6, name: 'Short Grain', subtitle: 'Premium Short Grain Rice', cat: 'rice', price: 270, icon: '🫘', badge: null },
+  { id: 7, name: 'Daaghi', subtitle: 'Perfect for Biryani', cat: 'rice', price: 280, icon: '🍛', badge: 'Biryani' },
+  // BROWN RICE
+  { id: 8, name: 'B-1 Brown Rice', subtitle: 'Whole Grain Brown Rice', cat: 'brown-rice', price: 230, icon: '🌿', badge: 'Healthy' },
+  { id: 9, name: 'B-2 Brown Rice', subtitle: 'Nutritious Brown Basmati', cat: 'brown-rice', price: 180, icon: '🌱', badge: null },
+  // SELLA
+  { id: 10, name: 'Sella Gold', subtitle: 'Golden Sella Basmati', cat: 'rice', price: 380, icon: '🥇', badge: 'Gold' },
+  { id: 11, name: 'Sella Silver', subtitle: 'Silver Sella Basmati', cat: 'rice', price: 350, icon: '🥈', badge: null },
+  // CHAI PATT
+  { id: 12, name: 'Chai Patt Classic', subtitle: 'Aromatic Tea Leaves', cat: 'chai-patt', price: 250, icon: '🫖', badge: 'Aromatic' },
+  { id: 13, name: 'Chai Patt Premium', subtitle: 'Premium Blend Tea Leaves', cat: 'chai-patt', price: 350, icon: '🍵', badge: 'Premium' },
+];
+
+const CATEGORY_COLORS = {
+  'rice': 'linear-gradient(135deg,#fff5e6,#ffe0b2)',
+  'brown-rice': 'linear-gradient(135deg,#f1f8e9,#dcedc8)',
+  'chai-patt': 'linear-gradient(135deg,#fce4ec,#f8bbd0)',
+};
+
+let cart = [];
+
+// ─── RENDER HELPERS ─────────────────────────────────
+function buildCard(p, mini = false) {
+  const bg = CATEGORY_COLORS[p.cat] || '#f5f5f5';
+  return `
+  <div class="prod-card" id="card-${p.id}" style="min-width:${mini?'260px':'unset'}">
+    <div class="prod-img" style="background:${bg}">
+      <div class="prod-img-inner">${p.icon}</div>
+      ${p.badge ? `<span class="prod-badge">${p.badge}</span>` : ''}
+    </div>
+    <div class="prod-body">
+      <div class="prod-category">${p.cat === 'rice' ? 'Basmati Rice' : p.cat === 'brown-rice' ? 'Brown Rice' : 'Chai Patt'}</div>
+      <div class="prod-name">${p.name}</div>
+      <div class="prod-subtitle">${p.subtitle}</div>
+      <div class="prod-price-row">
+        <div class="prod-price">Rs. ${p.price.toLocaleString()} <span>/ kg</span></div>
+      </div>
+      <div class="qty-row">
+        <span class="qty-label">Qty (kg):</span>
+        <div class="qty-wrap">
+          <button class="qty-btn" onclick="changeQty(${p.id},-1)">−</button>
+          <input class="qty-input" id="qty-${p.id}" type="number" value="1" min="1" max="100" oninput="updateTotal(${p.id},${p.price})"/>
+          <button class="qty-btn" onclick="changeQty(${p.id},1)">+</button>
+        </div>
+      </div>
+      <div class="total-row">
+        <span class="total-label">Total:</span>
+        <span class="total-amount" id="total-${p.id}">Rs. ${p.price.toLocaleString()}</span>
+      </div>
+      <button class="add-cart-btn" onclick="addToCart(${p.id})">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Add to Cart
+      </button>
+    </div>
+  </div>`;
+}
+
+function renderProducts(filtered) {
+  const grid = document.getElementById('products-grid');
+  grid.innerHTML = filtered.length
+    ? filtered.map(p => buildCard(p)).join('')
+    : '<div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--muted)">No products found.</div>';
+}
+
+function renderFeatured() {
+  const featured = products.filter(p => p.cat === 'rice').slice(0, 5);
+  document.getElementById('home-featured').innerHTML = featured.map(p => buildCard(p, true)).join('');
+}
+
+// ─── QUANTITY ────────────────────────────────────────
+function changeQty(id, delta) {
+  const inp = document.getElementById('qty-' + id);
+  const p = products.find(x => x.id === id);
+  let v = parseInt(inp.value) || 1;
+  v = Math.max(1, v + delta);
+  inp.value = v;
+  document.getElementById('total-' + id).textContent = 'Rs. ' + (v * p.price).toLocaleString();
+}
+function updateTotal(id, price) {
+  const inp = document.getElementById('qty-' + id);
+  const v = Math.max(1, parseInt(inp.value) || 1);
+  inp.value = v;
+  document.getElementById('total-' + id).textContent = 'Rs. ' + (v * price).toLocaleString();
+}
+
+// ─── CART ────────────────────────────────────────────
+function addToCart(id) {
+  const p = products.find(x => x.id === id);
+  const qty = parseInt(document.getElementById('qty-' + id).value) || 1;
+  const existing = cart.find(x => x.id === id);
+  if (existing) { existing.qty += qty; existing.total = existing.qty * p.price; }
+  else { cart.push({ id: p.id, name: p.name, icon: p.icon, price: p.price, qty, total: qty * p.price }); }
+  updateCartUI();
+  showToast(`✅ ${p.name} added to cart!`);
+  openCart();
+}
+function removeFromCart(id) {
+  cart = cart.filter(x => x.id !== id);
+  updateCartUI();
+}
+function updateCartUI() {
+  const total = cart.reduce((s, x) => s + x.total, 0);
+  const count = cart.reduce((s, x) => s + x.qty, 0);
+  const countEl = document.getElementById('cart-count');
+  countEl.textContent = count;
+  countEl.classList.toggle('show', count > 0);
+  document.getElementById('cart-total').textContent = 'Rs. ' + total.toLocaleString();
+  const itemsEl = document.getElementById('cart-items');
+  if (!cart.length) {
+    itemsEl.innerHTML = '<div class="cart-empty"><div class="big-icon">🛒</div><p>Your cart is empty.<br/>Add some rice to get started!</p></div>';
+    return;
+  }
+  itemsEl.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-icon">${item.icon}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-meta">${item.qty} kg × Rs. ${item.price.toLocaleString()}</div>
+        <div class="cart-item-price">Rs. ${item.total.toLocaleString()}</div>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart(${item.id})">✕</button>
+    </div>`).join('');
+}
+function openCart() { document.getElementById('cart-overlay').classList.add('open'); document.getElementById('cart-sidebar').classList.add('open'); }
+function closeCart() { document.getElementById('cart-overlay').classList.remove('open'); document.getElementById('cart-sidebar').classList.remove('open'); }
+
+// ─── CHECKOUT ────────────────────────────────────────
+function openCheckout() {
+  if (!cart.length) { showToast('🛒 Cart is empty!'); return; }
+  closeCart();
+  const total = cart.reduce((s, x) => s + x.total, 0);
+  const rows = cart.map(i => `<div class="row"><span>${i.name} (${i.qty}kg)</span><span>Rs. ${i.total.toLocaleString()}</span></div>`).join('');
+  document.getElementById('modal-order-summary').innerHTML = rows + `<div class="row total"><span>Total</span><span>Rs. ${total.toLocaleString()}</span></div>`;
+  document.getElementById('checkout-modal').classList.add('open');
+}
+function closeCheckout() { document.getElementById('checkout-modal').classList.remove('open'); }
+
+function placeOrder() {
+  const name = document.getElementById('cust-name').value.trim();
+  const phone = document.getElementById('cust-phone').value.trim();
+  const addr = document.getElementById('cust-address').value.trim();
+  if (!name || !phone || !addr) { showToast('⚠️ Please fill all required fields.'); return; }
+  const total = cart.reduce((s, x) => s + x.total, 0);
+  const orderLines = cart.map(i => `${i.name} (${i.qty}kg) = Rs.${i.total}`).join('%0A');
+  const msg = `Hello! I would like to place an order:%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AAddress: ${encodeURIComponent(addr)}%0A%0AOrder:%0A${orderLines}%0A%0ATotal: Rs.${total}%0APayment: Cash on Delivery`;
+  window.open(`https://wa.me/923222442014?text=${msg}`, '_blank');
+  closeCheckout();
+  cart = []; updateCartUI();
+  document.getElementById('cust-name').value = '';
+  document.getElementById('cust-phone').value = '';
+  document.getElementById('cust-address').value = '';
+  document.getElementById('success-modal').classList.add('open');
+}
+function closeSuccess() { document.getElementById('success-modal').classList.remove('open'); showPage('home'); }
+
+// ─── FILTER ──────────────────────────────────────────
+function filterCat(cat, btn) {
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderProducts(cat === 'all' ? products : products.filter(p => p.cat === cat));
+}
+
+// ─── SEARCH ──────────────────────────────────────────
+function handleSearch(q) {
+  const el = document.getElementById('search-results');
+  if (!q.trim()) { el.classList.remove('show'); return; }
+  const results = products.filter(p => p.name.toLowerCase().includes(q.toLowerCase()) || p.subtitle.toLowerCase().includes(q.toLowerCase()));
+  if (!results.length) { el.innerHTML = '<div style="padding:16px;text-align:center;color:var(--muted);font-size:.88rem">No products found</div>'; el.classList.add('show'); return; }
+  el.innerHTML = results.map(p => `
+    <div class="sr-item" onclick="goToProduct(${p.id})">
+      <span class="sr-icon">${p.icon}</span>
+      <div><div class="sr-name">${p.name}</div><div class="sr-cat">${p.subtitle}</div></div>
+      <span class="sr-price">Rs. ${p.price}/kg</span>
+    </div>`).join('');
+  el.classList.add('show');
+}
+function closeSearch() { document.getElementById('search-results').classList.remove('show'); document.getElementById('search-input').value = ''; }
+function goToProduct(id) {
+  closeSearch();
+  showPage('products');
+  filterCat('all', document.querySelector('.cat-tab'));
+  setTimeout(() => { const el = document.getElementById('card-' + id); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 200);
+}
+
+// ─── NAVIGATION ──────────────────────────────────────
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-center a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.getElementById('nav-' + page).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── TOAST ───────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ─── INIT ─────────────────────────────────────────────
+renderProducts(products);
+renderFeatured();
+</script>
+</body>
+</html>
