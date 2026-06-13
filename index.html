@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aqaab Rice – Premium Basmati Rice</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+
+<div class="announce-bar">🚚 <strong>Free Delivery</strong> on orders of <strong>20kg or above!</strong> &nbsp;·&nbsp; Cash on Delivery Available</div>
+
+<div class="social-bar">
+  <span class="tagline">Premium Basmati Rice — Straight from the Fields</span>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/share/1BBqATP19T/" target="_blank" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    <a href="https://www.instagram.com/aqaabrice?igsh=eWk1ZHR0NjAyb24y" target="_blank" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="3"/></svg></a>
+    <a href="https://wa.me/923222442014" target="_blank" title="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo" onclick="showPage('home')" style="gap:0;">
+    <img src="images/logo.png" alt="Aqaab Rice" style="height:58px;width:auto;object-fit:contain;"/>
+  </div>
+  <div class="nav-center">
+    <a onclick="showPage('home')" id="nav-home" class="active">Home</a>
+    <a onclick="showPage('about')" id="nav-about">About</a>
+    <a onclick="showPage('products')" id="nav-products">Products</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="Search products…" oninput="handleSearch(this.value)" onblur="setTimeout(closeSearch,200)"/>
+      <div class="search-results" id="search-results"></div>
+    </div>
+    <button class="cart-btn" onclick="openCart()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Cart <span class="cart-count" id="cart-count">0</span>
+    </button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu-overlay" id="mob-overlay" onclick="closeMobileMenu()"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="closeMobileMenu();showPage('home')" id="mob-home">Home</a>
+  <a onclick="closeMobileMenu();showPage('about')" id="mob-about">About</a>
+  <a onclick="closeMobileMenu();showPage('products')" id="mob-products">Products</a>
+  <a onclick="closeMobileMenu();showPage('products');setTimeout(function(){filterCat('basmati',null);},120)" style="padding-left:36px;font-size:.95rem;color:var(--mu);">— Basmati Rice</a>
+  <a onclick="closeMobileMenu();showPage('products');setTimeout(function(){filterCat('sella',null);},120)" style="padding-left:36px;font-size:.95rem;color:var(--mu);">— Sella Rice</a>
+  <a onclick="closeMobileMenu();showPage('products');setTimeout(function(){filterCat('brown-rice',null);},120)" style="padding-left:36px;font-size:.95rem;color:var(--mu);">— Brown Rice</a>
+  <a onclick="closeMobileMenu();showPage('products');setTimeout(function(){filterCat('chai-patti',null);},120)" style="padding-left:36px;font-size:.95rem;color:var(--mu);">— Chai Patti</a>
+  <a href="https://wa.me/923222442014" target="_blank" style="background:#25d366;color:#fff;font-weight:700;" onclick="closeMobileMenu()">💬 Order on WhatsApp</a>
+</div>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  
+<!-- HERO CAROUSEL -->
+<div class="hero-carousel" id="heroCarousel">
+  <div class="hero-carousel-track" id="carouselTrack">
+    <div class="hero-slide">
+      <img src="images/hero-1.png" alt="Aqaab Rice - Har Daane Mein Mohabbat">
+      <div class="hero-slide-overlay"></div>
+    </div>
+    <div class="hero-slide">
+      <img src="images/hero-2.png" alt="Aqaab Rice - Pure Grains Perfected by Nature">
+      <div class="hero-slide-overlay"></div>
+    </div>
+    <div class="hero-slide">
+      <img src="images/hero-3.png" alt="Aqaab Rice - Royal Flavor Timeless Tradition">
+      <div class="hero-slide-overlay"></div>
+    </div>
+  </div>
+  <!-- Arrows -->
+  <button class="carousel-arrow prev" onclick="carouselMove(-1)" aria-label="Previous">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="carousel-arrow next" onclick="carouselMove(1)" aria-label="Next">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <!-- Dots -->
+  <div class="carousel-dots" id="carouselDots">
+    <div class="cdot active" onclick="carouselGoTo(0)"></div>
+    <div class="cdot" onclick="carouselGoTo(1)"></div>
+    <div class="cdot" onclick="carouselGoTo(2)"></div>
+  </div>
+  <!-- Progress bar -->
+  <div class="carousel-progress" id="carouselProgress" style="width:0%"></div>
+</div>
+
+
+
+<!-- CATEGORY SECTION -->
+<div class="cat-section">
+  <p class="cat-section-title">Shop by Category</p>
+  <p class="cat-section-sub">Explore our full range of premium rice and specialty products</p>
+  <div class="cat-cards-grid">
+
+    <div class="cat-card" onclick="showPage('products');setTimeout(function(){filterCat('basmati',null);},100)">
+      <img src="images/cat-basmati.png" alt="Basmati Rice"/>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-title">Basmati Rice</div>
+        <div class="cat-card-sub">Pure · Aromatic · Extra Long Grain</div>
+        <button class="cat-card-btn">
+          Browse Products
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="cat-card" onclick="showPage('products');setTimeout(function(){filterCat('sella',null);},100)">
+      <img src="images/cat-sella.png" alt="Sella Rice"/>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-title">Sella Rice</div>
+        <div class="cat-card-sub">XXXL Extra Long Grain</div>
+        <button class="cat-card-btn">
+          Browse Products
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="cat-card" onclick="showPage('products');setTimeout(function(){filterCat('brown-rice',null);},100)">
+      <img src="images/cat-brown.png" alt="Brown Rice"/>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-title">Brown Rice</div>
+        <div class="cat-card-sub">Healthier Choices, Naturally</div>
+        <button class="cat-card-btn">
+          Browse Products
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="cat-card" onclick="showPage('products');setTimeout(function(){filterCat('chai-patti',null);},100)">
+      <img src="images/cat-chai.png" alt="Chai Patti"/>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-body">
+        <div class="cat-card-title">Chai Patti</div>
+        <div class="cat-card-sub">Perfect Blend, Perfect Taste</div>
+        <button class="cat-card-btn">
+          Browse Products
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <div class="stats-strip">
+    <div class="stat-item"><span class="stat-num">11+</span><span class="stat-label">Rice Varieties</span></div>
+    <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Pure & Natural</span></div>
+    <div class="stat-item"><span class="stat-num">COD</span><span class="stat-label">Cash on Delivery</span></div>
+    <div class="stat-item"><span class="stat-num">🚚</span><span class="stat-label">Free on 20kg+</span></div>
+  </div>
+  <div class="section">
+    <p class="section-title">Why Choose Aqaab?</p>
+    <div class="divider"></div>
+    <p class="section-sub">We bring the finest grains with uncompromising quality at every step</p>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">🌾</div><h3>Farm to Table</h3><p>Sourced directly from the finest paddy fields, ensuring freshness and authenticity in every bag.</p></div>
+      <div class="feature-card"><div class="feature-icon">✅</div><h3>Quality Assured</h3><p>Every batch is inspected and tested to meet the highest standards of purity and taste.</p></div>
+      <div class="feature-card"><div class="feature-icon">💰</div><h3>Fair Pricing</h3><p>Premium quality at honest prices. We believe everyone deserves the best rice on their table.</p></div>
+      <div class="feature-card"><div class="feature-icon">🚚</div><h3>Quick Delivery</h3><p>Cash on delivery with fast dispatch. Your order arrives fresh at your doorstep.</p></div>
+    </div>
+  </div>
+  <div class="feat-prod-strip">
+    <div class="inner">
+      <p class="section-title">Bestsellers</p>
+      <div class="divider"></div>
+      <p class="section-sub" style="margin-bottom:30px">Our most loved varieties — trusted by thousands of families</p>
+      <div class="products-scroll" id="home-featured"></div>
+      <div style="text-align:center;margin-top:30px"><button class="btn-primary" onclick="showPage('products')">View All Products</button></div>
+    </div>
+  </div>
+  <div style="background:linear-gradient(135deg,#5a0000,#8B0000);padding:60px 40px;text-align:center">
+    <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;color:#fff;margin-bottom:16px">Order via WhatsApp</h2>
+    <p style="color:rgba(255,255,255,.8);max-width:500px;margin:0 auto 28px;line-height:1.7">Have questions or want a bulk order? Chat with us directly for instant assistance.</p>
+    <a href="https://wa.me/923222442014?text=Hello!%20I%20would%20like%20to%20order%20Aqaab%20Rice." target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <h1>Our Story</h1>
+    <p>Born from a passion for purity and a commitment to bringing the finest grains of Pakistan to every home.</p>
+  </div>
+  <div class="section">
+    <div class="about-grid">
+      <div class="about-img-wrap" style="background:#000;border-radius:20px;overflow:hidden;aspect-ratio:4/3;position:relative;">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          style="width:100%;height:100%;object-fit:cover;display:block;border-radius:20px;"
+        >
+          <source src="images/hero-video.mp4" type="video/mp4"/>
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="about-text">
+        <h2>Rooted in Tradition, Driven by Quality</h2>
+        <p>Aqaab Rice was founded with a single mission: to deliver the purest, most fragrant basmati and specialty rice directly to Pakistani families. The name "Aqaab" — meaning Eagle in Urdu — symbolizes our sharp eye for quality and precision.</p>
+        <p>We work with experienced rice cultivators across Pakistan's most fertile regions, ensuring that every grain meets our strict standards before it reaches your table.</p>
+        <p>From our signature 1121 Basmati to our nutritious Brown Rice and aromatic Chai Patti, each product line represents our dedication to bringing you the best nature has to offer.</p>
+        <ul>
+          <li>Directly sourced from premium paddy fields</li>
+          <li>Rigorous quality inspection at every stage</li>
+          <li>Hygienic packaging to preserve freshness</li>
+          <li>Multiple rice varieties for every cooking need</li>
+          <li>Cash on delivery for your convenience</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div style="background:#fff;padding:60px 40px">
+    <div style="max-width:1200px;margin:0 auto">
+      <p class="section-title">Our Product Range</p><div class="divider"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:40px">
+        <div style="background:var(--cream);border-radius:12px;padding:28px;text-align:center;border:1px solid var(--bo)"><div style="font-size:2.5rem;margin-bottom:12px">🌾</div><h3 style="font-family:'Playfair Display',serif;color:var(--cr);font-size:1.1rem;margin-bottom:8px">Basmati Rice</h3><p style="color:var(--mu);font-size:.85rem;line-height:1.6">Supreme, Riwaiti, Classic and more.</p></div>
+        <div style="background:var(--cream);border-radius:12px;padding:28px;text-align:center;border:1px solid var(--bo)"><div style="font-size:2.5rem;margin-bottom:12px">🌿</div><h3 style="font-family:'Playfair Display',serif;color:var(--cr);font-size:1.1rem;margin-bottom:8px">Brown Rice</h3><p style="color:var(--mu);font-size:.85rem;line-height:1.6">Nutritious whole-grain brown rice.</p></div>
+        <div style="background:var(--cream);border-radius:12px;padding:28px;text-align:center;border:1px solid var(--bo)"><div style="font-size:2.5rem;margin-bottom:12px">✨</div><h3 style="font-family:'Playfair Display',serif;color:var(--cr);font-size:1.1rem;margin-bottom:8px">Sella Rice</h3><p style="color:var(--mu);font-size:.85rem;line-height:1.6">Golden & Silver Sella basmati.</p></div>
+        <div style="background:var(--cream);border-radius:12px;padding:28px;text-align:center;border:1px solid var(--bo)"><div style="font-size:2.5rem;margin-bottom:12px">🫖</div><h3 style="font-family:'Playfair Display',serif;color:var(--cr);font-size:1.1rem;margin-bottom:8px">Chai Patti</h3><p style="color:var(--mu);font-size:.85rem;line-height:1.6">Aromatic tea leaves for perfect chai.</p></div>
+      </div>
+    </div>
+  </div>
+  <div style="background:var(--cd);padding:60px 40px;text-align:center">
+    <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:#fff;margin-bottom:16px">Ready to Experience the Difference?</h2>
+    <p style="color:rgba(255,255,255,.75);margin-bottom:28px">Explore our full range and order with Cash on Delivery.</p>
+    <button class="btn-primary" onclick="showPage('products')">Browse Products</button>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="page" id="page-products">
+  <div class="products-hero">
+    <h1>Our Products</h1>
+    <p>Premium quality grains delivered to your door</p>
+  </div>
+  <div class="cat-tabs">
+    <button class="cat-tab active" onclick="filterCat('all',this)">All Products</button>
+    <button class="cat-tab" onclick="filterCat('basmati',this)">Basmati Rice</button>
+    <button class="cat-tab" onclick="filterCat('brown-rice',this)">Brown Rice</button>
+    <button class="cat-tab" onclick="filterCat('sella',this)">Sella Rice</button>
+    <button class="cat-tab" onclick="filterCat('chai-patti',this)">Chai Patti</button>
+  </div>
+  <div class="products-grid" id="products-grid"></div>
+</div>
+
+<!-- PRODUCT DETAIL -->
+<div class="page" id="page-detail">
+  <div class="detail-back-bar">
+    <button class="detail-back-btn" onclick="goBackFromDetail()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Products
+    </button>
+  </div>
+  <div class="detail-wrap">
+    <div class="detail-img-col">
+      <div class="detail-img-main" id="d-img"></div>
+      <div class="detail-badge-row" id="d-badges"></div>
+    </div>
+    <div class="detail-info-col">
+      <div class="detail-cat" id="d-cat"></div>
+      <div class="detail-name" id="d-name"></div>
+      <div class="detail-sub" id="d-sub"></div>
+      <div class="detail-price-box">
+        <div>
+          <div class="detail-price-label">Price per kg</div>
+          <div class="detail-price-val" id="d-price"></div>
+        </div>
+        <svg viewBox="0 0 64 64" width="56" height="56" fill="none" opacity=".25"><ellipse cx="32" cy="32" rx="14" ry="22" fill="white"/><ellipse cx="32" cy="32" rx="8" ry="14" fill="white" opacity=".6"/></svg>
+      </div>
+      <div class="detail-features">
+        <h4>Product Highlights</h4>
+        <ul id="d-features"></ul>
+      </div>
+      <div class="detail-qty-box">
+        <label>Select Quantity (kg)</label>
+        <div class="detail-qty-controls">
+          <div class="detail-qty-wrap">
+            <button class="dqty-btn" type="button" onclick="dChangeQty(-1)">&#8722;</button>
+            <input class="dqty-input" id="d-qty" type="number" value="1" min="1" max="100" oninput="dUpdateTotal()">
+            <button class="dqty-btn" type="button" onclick="dChangeQty(1)">&#43;</button>
+          </div>
+        </div>
+        <div class="detail-total-row">
+          <span class="detail-total-label">Total Amount:</span>
+          <span class="detail-total-val" id="d-total">Rs. 0</span>
+        </div>
+      </div>
+      <button class="detail-add-btn" onclick="dAddToCart()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Add to Cart
+      </button>
+      <a class="detail-wa-btn" id="d-wa" href="#" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Order via WhatsApp
+      </a>
+      <div class="detail-trust">
+        <span class="trust-tag">✓ Cash on Delivery</span>
+        <span class="trust-tag">✓ Free Delivery on 20kg+</span>
+        <span class="trust-tag">✓ 100% Pure</span>
+        <span class="trust-tag">✓ Hygienically Packed</span>
+      </div>
+    </div>
+  </div>
+  <div class="related-sec">
+    <div class="inner">
+      <p class="section-title" style="font-size:1.8rem;text-align:left;margin-bottom:4px">You May Also Like</p>
+      <div class="divider" style="margin:8px 0 24px 0"></div>
+      <div class="related-grid" id="d-related"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-head"><h2>🛒 Your Cart</h2><button class="cart-close" onclick="closeCart()">✕</button></div>
+  <div class="cart-items" id="cart-items"><div class="cart-empty"><div class="big-icon">🛒</div><p>Your cart is empty.<br/>Add some products to get started!</p></div></div>
+  <div class="cart-foot">
+    <div class="cart-total-row"><span>Total</span><span class="amt" id="cart-total">Rs. 0</span></div>
+    <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkout-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeCheckout()">✕</button>
+    <h2>Complete Your Order</h2>
+    <p class="sub">Fill in your details and we'll deliver to you!</p>
+    <div class="payment-badge"><span class="pi">💵</span><div><div class="pn">Cash on Delivery (COD)</div><div class="pd">Pay when your order arrives</div></div></div>
+    <div class="order-summary" id="modal-summary"></div>
+    <div class="form-group"><label>Full Name *</label><input type="text" id="cust-name" placeholder="e.g. Ahmed Khan"/></div>
+    <div class="form-group"><label>Phone Number *</label><input type="tel" id="cust-phone" placeholder="e.g. 03XX XXXXXXX"/></div>
+    <div class="form-group"><label>Delivery Address *</label><textarea id="cust-address" placeholder="House/Flat No., Street, Area, City"></textarea></div>
+    <button class="place-order-btn" onclick="placeOrder()">🛒 Place Order</button>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="success-modal">
+  <div class="modal success-modal">
+    <span class="success-icon">🎉</span>
+    <h2>Order Placed!</h2>
+    <p>Thank you! We've received your order and will contact you shortly.</p>
+    <p style="font-size:.85rem;color:#888">Queries? WhatsApp: <strong>0322-2442014</strong></p>
+    <button class="btn-primary" style="margin-top:16px" onclick="closeSuccess()">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="fname" style="display:flex;align-items:center;gap:10px;">
+        <img src="images/logo.png" alt="Aqaab" style="height:36px;width:auto;filter:brightness(0) invert(1);"/>
+      </div>
+      <p>Premium basmati and specialty rice delivered across Pakistan. Quality you can taste in every grain.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/share/1BBqATP19T/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.instagram.com/aqaabrice?igsh=eWk1ZHR0NjAyb24y" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="3"/></svg></a>
+        <a href="https://wa.me/923222442014" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('about')">About Us</a>
+      <a onclick="showPage('products')">All Products</a>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <a onclick="navToCategory('basmati')">Basmati Rice</a>
+      <a onclick="navToCategory('brown-rice')">Brown Rice</a>
+      <a onclick="navToCategory('sella')">Sella Rice</a>
+      <a onclick="navToCategory('chai-patti')">Chai Patti</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>📞 0322-2442014</p>
+      <a href="https://wa.me/923222442014" target="_blank">💬 WhatsApp Us</a>
+      <a href="https://www.instagram.com/aqaabrice" target="_blank">📷 @aqaabrice</a>
+    </div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Aqaab Rice. All rights reserved. | COD | Free Delivery on 20kg+</p></div>
+</footer>
+
+<a class="wa-fab" href="https://wa.me/923222442014?text=Hello!%20I%27d%20like%20to%20order%20Aqaab%20Rice." target="_blank">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="wa-tooltip">Chat with us!</span>
+</a>
+
+<div class="toast" id="toast"></div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
